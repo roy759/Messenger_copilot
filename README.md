@@ -19,7 +19,7 @@ Messenger Copilot is an AI-enhanced chat interface designed to assist users with
 - Supabase (for backend/database, if used)
 - OpenAI (for AI-generated text)
   
-## Vercel Deployment Link : https://vercel.com/anik-roys-projects-f3b9b9dd/messenger-copilot/4HuGQuZjPTfXZveWRtcASRXXDy3r
+## Vercel Deployment Link : https://messenger-copilot.vercel.app
 
 ## 🔧 Local Setup
 
