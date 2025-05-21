@@ -15,8 +15,6 @@ Messenger Copilot is an AI-enhanced chat interface designed to assist users with
 
 - React
 - Tailwind CSS
-- Bolt (for frontend workflow)
-- Supabase (for backend/database, if used)
 - OpenAI (for AI-generated text)
   
 ## Vercel Deployment Link : https://messenger-copilot.vercel.app
