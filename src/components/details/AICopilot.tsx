@@ -155,7 +155,7 @@ I recommend verifying their payment history and processing a refund for the dupl
             e.preventDefault();
             handleAskQuestion(question);
           }}
-          className="relative"
+          className="relative z-20"
         >
           <input
             type="text"
