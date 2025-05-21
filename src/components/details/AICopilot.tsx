@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User, Conversation } from '../../types';
-import { Bot, ChevronRight } from 'lucide-react';
+import { Bot, ChevronRight, Zap, FileText, Wand2, MessageSquare, Ticket, Clock, Upload, Image } from 'lucide-react';
 
 interface AICopilotProps {
   user: User;
@@ -11,6 +11,7 @@ const AICopilot: React.FC<AICopilotProps> = ({ user, conversation }) => {
   const [question, setQuestion] = useState('');
   const [isThinking, setIsThinking] = useState(false);
   const [responses, setResponses] = useState<string[]>([]);
+  const [showSmartActions, setShowSmartActions] = useState(false);
   
   const suggestedQuestions = [
     "How do I get a refund?",
@@ -24,11 +25,9 @@ const AICopilot: React.FC<AICopilotProps> = ({ user, conversation }) => {
     setIsThinking(true);
     setQuestion('');
     
-    // Simulate AI thinking delay
     setTimeout(() => {
       let response = '';
       
-      // Generate mock responses based on question content
       if (q.toLowerCase().includes('refund')) {
         response = `Based on the conversation, this customer was charged twice for their subscription on May 3rd. According to our refund policy, they are eligible for a refund of the duplicate charge.
 
@@ -58,6 +57,16 @@ I recommend verifying their payment history and processing a refund for the dupl
     }, 1500);
   };
 
+  const smartActions = [
+    { icon: FileText, label: 'Write a note' },
+    { icon: Wand2, label: 'Use macro' },
+    { icon: MessageSquare, label: 'Summarize conversation' },
+    { icon: Ticket, label: 'Create back-office ticket' },
+    { icon: Clock, label: 'Snooze' },
+    { icon: Upload, label: 'Upload attachment' },
+    { icon: Image, label: 'Insert GIF' },
+  ];
+
   return (
     <div className="bg-gradient-to-br from-[#d8b4fe] via-[#a5b4fc] to-[#fbcfe8] p-10 rounded-xl shadow-sm space-y-6">
       {/* AI Copilot Header Card */}
@@ -71,6 +80,30 @@ I recommend verifying their payment history and processing a refund for the dupl
         <p className="text-sm text-gray-600 mb-3">
           I can help answer questions about this conversation and suggest actions.
         </p>
+        
+        {/* AI Smart Actions Button */}
+        <button
+          onClick={() => setShowSmartActions(!showSmartActions)}
+          className="w-full mt-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center space-x-2"
+        >
+          <Zap className="h-4 w-4" />
+          <span>AI Smart Actions</span>
+        </button>
+
+        {/* Smart Actions Dropdown */}
+        {showSmartActions && (
+          <div className="absolute mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden backdrop-blur-sm bg-white/90">
+            {smartActions.map((action, index) => (
+              <button
+                key={index}
+                className="w-full px-4 py-3 flex items-center space-x-3 hover:bg-gray-50 transition-colors"
+              >
+                <action.icon className="h-5 w-5 text-purple-600" />
+                <span className="text-gray-700">{action.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       
       {/* Suggested Questions */}
